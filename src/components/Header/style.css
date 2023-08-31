@@ -1,0 +1,23 @@
+nav {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img {
+    width: 75px;
+    margin-left: 20px;
+}
+
+.navItems {
+    font-family: 'Philosopher', sans-serif;
+    text-decoration: none;
+    padding: 32px 40px;
+    color: #A4193D;
+}
+
+.navItems:hover {
+    background-color: #ddd;
+}
+ 

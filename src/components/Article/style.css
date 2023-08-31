@@ -1,0 +1,28 @@
+.articlePosts {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  font-family: "Philosopher", sans-serif;
+  text-align: center;
+}
+.articlePosts h1 {
+  color: #a4193d;
+  font-size: xx-large;
+}
+.articlePosts h2 {
+  color: #a4193d;
+}
+
+.articlePosts p {
+  width: 80%;
+  font-size: large;
+}
+.articlePosts img {
+  width: 70vw;
+  height: 50vw;
+  max-height: 600px;
+  max-width: 1000px;
+  border-radius: 30px;
+}

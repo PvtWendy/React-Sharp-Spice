@@ -1,38 +1,56 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.articleContainer{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .articleContainer article{
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 100px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    transition: 0.5s ease-in-out;
   }
-  to {
-    transform: rotate(360deg);
+  .articleContainer img{
+    width: 700px;
+    height: 450px;
+    border-radius: 30px;
   }
+.articleContainer div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between
+    ;
+}
+  .articleContainer h1{
+    font-family: 'Philosopher', sans-serif;
+    color: #A4193D;
+    font-size: x-large;
+  }
+  .articleContainer p{
+    font-family: 'Philosopher', sans-serif;
+    width: 80%;
+    font-size: large;
+  }
+  .articleContainer button{
+    background-color: #A4193D;
+    color: white;
+    text-decoration: none;
+    font-family:'Philosopher', sans-serif;
+    padding: 10px 25px;
+    border-radius: 5px;
+    margin-top: 100px;
+    transition: ease-in-out 0.25s;
+    border: 0;
+  }
+.articleContainer button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    background-color: #8b1535;
 }
