@@ -14,7 +14,7 @@ function App() {
       <Carousel />
       <section className="articleContainer" id="postsContainer">
         <Article image={Kitchen} position={"left"} text={posts[0].shortPost} />
-        <Article image=
+        <Article image={}/>
       </section>
       <Footer />
     </div>
