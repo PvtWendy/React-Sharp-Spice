@@ -1,5 +1,4 @@
-import { forwardRef, useEffect, useRef, useState } from "react";
-import { posts } from "../../posts";
+import { useEffect, useRef, useState } from "react";
 import "./style.css";
 
 import Crostini from "../../images/Crostini.png";
@@ -8,10 +7,12 @@ import Nutrition from "../..//images/Nutrition.png";
 import Presentation from "../../images/Presentation.png";
 import Airfryer from "../../images/Airfryer.png";
 import userEvent from "@testing-library/user-event";
+
+
 export default function Article(props) {
   const [open, setOpen] = useState(false);
   const [close, setClose] = useState(false);
-
+  //Fadein Fadeout Animation
   const mountedStyle = {
     animation: "inAnimation 500ms ease-in",
   };
@@ -20,12 +21,13 @@ export default function Article(props) {
     animationFillMode: "forwards",
   };
   const scrollRef = useRef(null);
-
+  //Effect to scroll to ref when component changes
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollIntoView({ behavior: "smooth" }, true);
     }
   });
+  //Function to play Fadeout animation and setup Fadein
   const closeBtn = () => {
     setClose(true);
     setTimeout(() => {
@@ -33,6 +35,10 @@ export default function Article(props) {
     }, 500);
   };
 
+  /*
+  Conditionally rendered component, only renders when the button wasn't pressed
+  And renders left and right variants based on props.state property
+  */
   if (props.state === "left" && open == false) {
     return (
       <article id={props.key} style={close ? unmountedStyle : null}>
