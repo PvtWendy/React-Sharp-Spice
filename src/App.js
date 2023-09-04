@@ -13,7 +13,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Carousel />
+      <Carousel/>
       <section className="articleContainer" id="postsContainer">
         <Article image={Kitchen} state={"left"} text={posts[0].shortPost} full={posts[0].longPost}/>
         <Article image={Crostini} state={"right"} text={posts[1].shortPost} full={posts[1].longPost}/>
