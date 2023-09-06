@@ -2,20 +2,25 @@ import Kitchen from "../../images/Kitchen.png";
 import Crostini from "../../images/Crostini.png";
 import Nutrition from "../../images/Nutrition.png";
 import "./style.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 export default function Carousel(props) {
-  const [currentSlide, setCurrentSlide] = useState(1);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  //Defines slide to navigate to
   const navigateSlides = (offset) => {
     const slides = document.querySelectorAll(".slide");
-    setCurrentSlide((currentSlide + offset + slides.length) % slides.length);
-    console.log(currentSlide);
-
+    const newCurrentSlide = (currentSlide + offset + slides.length) % slides.length;
+    setCurrentSlide(newCurrentSlide);
+  };
+  //Updates slide after the async useState update
+  useEffect(() => {
+    const slides = document.querySelectorAll(".slide");
     slides.forEach((slide, index) => {
       const translateValue = (index - currentSlide) * 100;
       slide.style.transform = `translateX(${translateValue}%)`;
     });
-  };
+  }, [currentSlide]);
 
 
   return (
