@@ -21,7 +21,7 @@ export default function Carousel(props) {
   return (
     <article class="slider">
       <section class="slide" style={{ transform: `translateX(0%)` }}>
-        <a href="#" onClick={props.first}>
+        <a onClick={props.first}>
           <img src={Kitchen} alt="Red Kitchen" />
           <p>
             Unlocking Flavor with Every Hue: Discover the Magic of Color Theory
@@ -30,13 +30,13 @@ export default function Carousel(props) {
         </a>
       </section>
       <section class="slide" style={{ transform: `translateX(100%)` }}>
-        <a  href="#" onClick={props.second}>
+        <a onClick={props.second}>
           <img src={Crostini} alt="Red Kitchen" />
           <p>Tomato Crostini: A Bite of Pure Delight!</p>
         </a>
       </section>
       <section class="slide" style={{ transform: `translateX(200%)` }}>
-        <a  href="#" onClick={props.third}>
+        <a onClick={props.third}>
           <img src={Nutrition} alt="Red Kitchen" />
           <p>
             Savoring Health: Unveiling the Easiest and Most Flavorful Path to

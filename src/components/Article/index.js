@@ -23,8 +23,13 @@ export default function Article(props) {
   const scrollRef = useRef(null);
   //Effect to scroll to ref when component changes
   useEffect(() => {
+    if (props.open != null && props.open == true) {
+    setOpen(props.open)
+    } 
     if (scrollRef.current) {
       scrollRef.current.scrollIntoView({ behavior: "smooth" }, true);
+      console.log(scrollRef.current)
+      
     }
   });
   //Function to play Fadeout animation and setup Fadein
