@@ -10,7 +10,8 @@ export default function Carousel(props) {
   //Defines slide to navigate to
   const navigateSlides = (offset) => {
     const slides = document.querySelectorAll(".slide");
-    const newCurrentSlide = (currentSlide + offset + slides.length) % slides.length;
+    const newCurrentSlide =
+      (currentSlide + offset + slides.length) % slides.length;
     setCurrentSlide(newCurrentSlide);
   };
   //Updates slide after the async useState update
@@ -21,7 +22,6 @@ export default function Carousel(props) {
       slide.style.transform = `translateX(${translateValue}%)`;
     });
   }, [currentSlide]);
-
 
   return (
     <article class="slider">
@@ -57,4 +57,4 @@ export default function Carousel(props) {
       </button>
     </article>
   );
-  }
+}

@@ -1,58 +1,57 @@
-.articleContainer{
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 0 auto;
-  }
-
-  .articleContainer article{
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    padding: 100px 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    transition: 0.5s ease-in-out;
-  }
-  .articleContainer img{
-    width: 700px;
-    height: 450px;
-    border-radius: 30px;
-  }
-.articleContainer div{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between
-    ;
+.articleContainer {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 auto;
 }
-  .articleContainer h1{
-    font-family: 'Philosopher', sans-serif;
-    color: #A4193D;
-    font-size: x-large;
-  }
-  .articleContainer p{
-    font-family: 'Philosopher', sans-serif;
-    width: 80%;
-    font-size: large;
-  }
-  .articleContainer button{
-    background-color: #A4193D;
-    color: white;
-    text-decoration: none;
-    font-family:'Philosopher', sans-serif;
-    padding: 10px 25px;
-    border-radius: 5px;
-    margin-top: 100px;
-    transition: ease-in-out 0.25s;
-    border: 0;
-  }
-.articleContainer button:hover{
-    transform: scale(1.1);
-    cursor: pointer;
-    background-color: #8b1535;
+
+.articleContainer article {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 100px 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  transition: 0.5s ease-in-out;
+}
+.articleContainer img {
+  width: 700px;
+  height: 450px;
+  border-radius: 30px;
+}
+.articleContainer div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.articleContainer h1 {
+  font-family: "Philosopher", sans-serif;
+  color: #a4193d;
+  font-size: x-large;
+}
+.articleContainer p {
+  font-family: "Philosopher", sans-serif;
+  width: 80%;
+  font-size: large;
+}
+.articleContainer button {
+  background-color: #a4193d;
+  color: white;
+  text-decoration: none;
+  font-family: "Philosopher", sans-serif;
+  padding: 10px 25px;
+  border-radius: 5px;
+  margin-top: 100px;
+  transition: ease-in-out 0.25s;
+  border: 0;
+}
+.articleContainer button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  background-color: #8b1535;
 }
 
 .hide {

@@ -1,79 +1,77 @@
 .slider {
-    height: 50vw;
-    max-height: 600px;
-    width: 70vw;
-    max-width: 1000px;
-    margin: 50px auto;
-    border-radius: 25px;
-    overflow: hidden;
-    position: relative;
-
+  height: 50vw;
+  max-height: 600px;
+  width: 70vw;
+  max-width: 1000px;
+  margin: 50px auto;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
 }
 
 .slide {
-    position: absolute;
-    background-color: #ccc;
-    width: 100%;
-    height: 100%;
-    border-radius: 30px;
-    transition: ease-in-out 0.5s;
+  position: absolute;
+  background-color: #ccc;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  transition: ease-in-out 0.5s;
 }
 
-.slide img{
-    position: relative;
-    object-fit:cover;
-    width: 100%;
-    height: 100%;
-    border-radius: 30px;
-       
+.slide img {
+  position: relative;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
 }
 
-.slide p{
-    position: relative;
-    bottom: 150px;
-    background-color: white;
-    width: fit-content;
-    font-family: 'Philosopher', sans-serif;
-    text-decoration: none;
-    color: #A4193D;
-    font-size: larger;
-    padding:5px 40px;
-    border-radius: 0 5px 5px 0;
+.slide p {
+  position: relative;
+  bottom: 150px;
+  background-color: white;
+  width: fit-content;
+  font-family: "Philosopher", sans-serif;
+  text-decoration: none;
+  color: #a4193d;
+  font-size: larger;
+  padding: 5px 40px;
+  border-radius: 0 5px 5px 0;
 }
-.slide a{
-    text-decoration: none;
-    cursor: pointer;
+.slide a {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .btn {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    padding: 10px;
-    border: none;
-    border-radius: 50%;
-    z-index: 10px;
-    cursor: pointer;
-    background-color: #fff;
-    font-size: 18px;
-    z-index: 2;
-    transition: 0.1s ease;
-  }
-  
-  .btn:hover {
-    transform: scale(1.1);
-  }
-  .btn:active{
-    background-color: #ccc;
-    transform:  scale(1);
-  }
-  
-  .btn-prev {
-    top: 50%;
-    left: 2%;
-  }
-  
-  .btn-next {
-    top: 50%;
-    right: 2%;
-  }
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  z-index: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  font-size: 18px;
+  z-index: 2;
+  transition: 0.1s ease;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+.btn:active {
+  background-color: #ccc;
+  transform: scale(1);
+}
+
+.btn-prev {
+  top: 50%;
+  left: 2%;
+}
+
+.btn-next {
+  top: 50%;
+  right: 2%;
+}

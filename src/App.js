@@ -19,9 +19,9 @@ function App() {
     <div>
       <Header />
       <Carousel
-        first={()=> setFirstOpen(true)}
-        second={()=> setSecondOpen(true)}
-        third={()=> setThirdOpen(true)}
+        first={() => setFirstOpen(true)}
+        second={() => setSecondOpen(true)}
+        third={() => setThirdOpen(true)}
       />
       <section className="articleContainer" id="postsContainer">
         <Article

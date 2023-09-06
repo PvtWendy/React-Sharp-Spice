@@ -8,7 +8,6 @@ import Presentation from "../../images/Presentation.png";
 import Airfryer from "../../images/Airfryer.png";
 import userEvent from "@testing-library/user-event";
 
-
 export default function Article(props) {
   const [articleOpen, setArticleOpen] = useState(props.open);
   const [close, setClose] = useState(false);
@@ -24,11 +23,10 @@ export default function Article(props) {
   //Effect to scroll to ref when component changes
   useEffect(() => {
     if (props.open != null && props.open == true) {
-    setArticleOpen(props.open)
-    } 
+      setArticleOpen(props.open);
+    }
     if (scrollRef.current) {
       scrollRef.current.scrollIntoView({ behavior: "smooth" }, true);
-      
     }
   });
   //Function to play Fadeout animation and setup Fadein
@@ -37,7 +35,7 @@ export default function Article(props) {
     setTimeout(() => {
       setArticleOpen(true);
       if (props.setOpen != null) {
-      props.setOpen(true); 
+        props.setOpen(true);
       }
     }, 500);
   };

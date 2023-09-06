@@ -1,50 +1,49 @@
-.articlePosts{
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-    font-family: 'Philosopher', sans-serif;
-    text-align: center;
+.articlePosts {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  font-family: "Philosopher", sans-serif;
+  text-align: center;
 }
-.articlePosts h1{
-    color: #A4193D;
-    font-size: xx-large;
+.articlePosts h1 {
+  color: #a4193d;
+  font-size: xx-large;
 }
-.articlePosts h2{
-    color: #A4193D;
-}
-
-.articlePosts p{
-    width: 80%;
-    font-size: large;
-}
-.articlePosts img{
-    width: 70vw;
-    height: 50vw;
-    max-height: 600px;
-    max-width: 1000px;
-    border-radius: 30px;
+.articlePosts h2 {
+  color: #a4193d;
 }
 
+.articlePosts p {
+  width: 80%;
+  font-size: large;
+}
+.articlePosts img {
+  width: 70vw;
+  height: 50vw;
+  max-height: 600px;
+  max-width: 1000px;
+  border-radius: 30px;
+}
 
 @keyframes inAnimation {
-    0% {
-      opacity: 0;
-      visibility: hidden;
-    }
-    100% {
-      opacity: 1;
-      visibility: visible;
-    }
+  0% {
+    opacity: 0;
+    visibility: hidden;
   }
-  
-  @keyframes outAnimation {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      visibility: hidden;
-    }
+  100% {
+    opacity: 1;
+    visibility: visible;
   }
+}
+
+@keyframes outAnimation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
