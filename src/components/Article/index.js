@@ -10,7 +10,7 @@ import userEvent from "@testing-library/user-event";
 
 
 export default function Article(props) {
-  const [open, setOpen] = useState(false);
+  const [articleOpen, setArticleOpen] = useState(props.open);
   const [close, setClose] = useState(false);
   //Fadein Fadeout Animation
   const mountedStyle = {
@@ -24,11 +24,10 @@ export default function Article(props) {
   //Effect to scroll to ref when component changes
   useEffect(() => {
     if (props.open != null && props.open == true) {
-    setOpen(props.open)
+    setArticleOpen(props.open)
     } 
     if (scrollRef.current) {
       scrollRef.current.scrollIntoView({ behavior: "smooth" }, true);
-      console.log(scrollRef.current)
       
     }
   });
@@ -36,7 +35,10 @@ export default function Article(props) {
   const closeBtn = () => {
     setClose(true);
     setTimeout(() => {
-      setOpen(true);
+      setArticleOpen(true);
+      if (props.setOpen != null) {
+      props.setOpen(true); 
+      }
     }, 500);
   };
 
@@ -44,7 +46,7 @@ export default function Article(props) {
   Conditionally rendered component, only renders when the button wasn't pressed
   And renders left and right variants based on props.state property
   */
-  if (props.state === "left" && open == false) {
+  if (props.state === "left" && articleOpen == false) {
     return (
       <article id={props.key} style={close ? unmountedStyle : null}>
         <img src={props.image} />
@@ -54,7 +56,7 @@ export default function Article(props) {
         </div>
       </article>
     );
-  } else if (props.state === "right" && open == false) {
+  } else if (props.state === "right" && articleOpen == false) {
     return (
       <article id={props.key} style={close ? unmountedStyle : null}>
         <div>
@@ -66,7 +68,7 @@ export default function Article(props) {
     );
   } else {
     return (
-      <div ref={scrollRef} style={open && mountedStyle}>
+      <div ref={scrollRef} style={articleOpen && mountedStyle}>
         {props.full}
       </div>
     );
