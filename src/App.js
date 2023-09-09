@@ -15,6 +15,18 @@ function App() {
   const [secondOpen, setSecondOpen] = useState(false);
   const [thirdOpen, setThirdOpen] = useState(false);
 
+  const renderedArticles = posts.map((prop, index) => (
+      <Article
+      image={Kitchen}
+      state={index % 2 == 0 ? "left" : "right"}
+      text={posts[index].shortPost}
+      full={posts[index].longPost}
+      open={false}
+      />
+
+    )
+
+  )
   return (
     <div>
       <Header />
@@ -24,44 +36,7 @@ function App() {
         third={() => setThirdOpen(true)}
       />
       <section className="articleContainer" id="postsContainer">
-        <Article
-          image={Kitchen}
-          state={"left"}
-          text={posts[0].shortPost}
-          full={posts[0].longPost}
-          open={firstOpen}
-          setOpen={setFirstOpen}
-        />
-        <Article
-          image={Crostini}
-          state={"right"}
-          text={posts[1].shortPost}
-          full={posts[1].longPost}
-          open={secondOpen}
-          setOpen={setSecondOpen}
-        />
-        <Article
-          image={Nutrition}
-          state={"left"}
-          text={posts[2].shortPost}
-          full={posts[2].longPost}
-          open={thirdOpen}
-          setOpen={setThirdOpen}
-        />
-        <Article
-          image={Presentation}
-          state={"right"}
-          text={posts[3].shortPost}
-          full={posts[3].longPost}
-          open={false}
-        />
-        <Article
-          image={Airfryer}
-          state={"left"}
-          text={posts[4].shortPost}
-          full={posts[4].longPost}
-          open={false}
-        />
+        {renderedArticles}
       </section>
       <Footer />
     </div>
