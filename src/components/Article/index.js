@@ -33,9 +33,11 @@ export default function Article(props) {
   const closeBtn = () => {
     setClose(true);
     setTimeout(() => {
-      setArticleOpen(true);
+      
       if (props.setOpen != null) {
         props.setOpen(true);
+      }else{
+        setArticleOpen(true);
       }
     }, 500);
   };

@@ -11,24 +11,36 @@ import Airfryer from "./images/Airfryer.png";
 import { posts } from "./posts";
 import { useState } from "react";
 function App() {
-  const [open, setOpen] = useState([false,false,false]);
+  const [firstOpen, setFirstOpen] = useState(false);
+  const [secondOpen, setSecondOpen] = useState(false);
+  const [thirdOpen, setThirdOpen] = useState(false);
 
+  const openCarousel = (index) => {
+    switch (index) {
+      case 0:
+        setFirstOpen(true);
+        break;
+      case 1:
+        setSecondOpen(true);
+      case 2:
+        setThirdOpen(true);
+
+      default:
+        console.log("Invalid Carousel Index")
+        break;
+    }
+  };
+  const open = [firstOpen,secondOpen,thirdOpen]
   const renderedArticles = posts.map((prop, index) => (
-      <Article
+    <Article
       image={Kitchen}
       state={index % 2 == 0 ? "left" : "right"}
       text={posts[index].shortPost}
       full={posts[index].longPost}
       open={index < open.length ? open[index] : false}
-      />
-
-    )
-  )
-  const openCarousel = (index) => {
-    const newOpen = [...open];
-    newOpen[index] = true;
-    setOpen(newOpen);
-  };
+      setOpen={index < open.length ? () => openCarousel(index) : null}
+    />
+  ));
   return (
     <div>
       <Header />
