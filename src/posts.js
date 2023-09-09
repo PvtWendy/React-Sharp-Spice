@@ -3,6 +3,11 @@ import Kitchen from "./images/Kitchen.png";
 import Nutrition from "./images/Nutrition.png";
 import Presentation from "./images/Presentation.png";
 import Airfryer from "./images/Airfryer.png";
+//TODO: Remake posts in a way it's usable as a global state
+/*
+Key seems unecessary for now, replace with image
+Will need a function to transform the user's input into template data
+*/
 export const posts = [
   {
     key: "color-theory",

@@ -33,10 +33,10 @@ export default function Article(props) {
   const closeBtn = () => {
     setClose(true);
     setTimeout(() => {
-      
+      //Only allows one setOpen to update, or else ref becomes latest instance
       if (props.setOpen != null) {
         props.setOpen(true);
-      }else{
+      } else {
         setArticleOpen(true);
       }
     }, 500);
