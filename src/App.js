@@ -20,11 +20,12 @@ function App() {
     newOpen[index] = true;
     setOpen(newOpen);
   };
+  const images =[Kitchen,Crostini,Nutrition,Presentation,Airfryer]
   //Renders articles based on how many posts there are
   //Although props counts as unused, it renders the Article props >>DO NOT REMOVE<<
   const renderedArticles = posts.map((props, index) => (
     <Article
-      image={Kitchen}
+      image={images[index]}
       state={index % 2 == 0 ? "left" : "right"}
       text={posts[index].shortPost}
       full={posts[index].longPost}

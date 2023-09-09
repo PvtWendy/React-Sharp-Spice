@@ -6,7 +6,6 @@ import Kitchen from "../../images/Kitchen.png";
 import Nutrition from "../..//images/Nutrition.png";
 import Presentation from "../../images/Presentation.png";
 import Airfryer from "../../images/Airfryer.png";
-import userEvent from "@testing-library/user-event";
 
 export default function Article(props) {
   const [articleOpen, setArticleOpen] = useState(props.open);
