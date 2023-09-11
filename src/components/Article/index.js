@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import { usePosts } from "../../postsContext";
 import "./style.css";
 export default function Article(props) {
   const [articleOpen, setArticleOpen] = useState(props.open);
   const [close, setClose] = useState(false);
+  const [image, setImage] = useState(null)
+  const {posts} = usePosts();
   //Fadein Fadeout Animation
   const mountedStyle = {
     animation: "inAnimation 500ms ease-in",
@@ -12,6 +15,7 @@ export default function Article(props) {
     animationFillMode: "forwards",
   };
   const scrollRef = useRef(null);
+
   //Effect to scroll to ref when component changes
   useEffect(() => {
     if (props.open != null && props.open == true) {
@@ -40,7 +44,7 @@ export default function Article(props) {
   */
   if (props.state === "left" && articleOpen == false) {
     return (
-      <article id={props.key} style={close ? unmountedStyle : null}>
+      <article style={close ? unmountedStyle : null}>
         <img src={props.image} />
         <div>
           {props.text}
@@ -50,7 +54,7 @@ export default function Article(props) {
     );
   } else if (props.state === "right" && articleOpen == false) {
     return (
-      <article id={props.key} style={close ? unmountedStyle : null}>
+      <article style={close ? unmountedStyle : null}>
         <div>
           {props.text}
           <button onClick={() => closeBtn()}>Read More</button>
@@ -61,7 +65,11 @@ export default function Article(props) {
   } else {
     return (
       <div ref={scrollRef} style={articleOpen && mountedStyle}>
-        {props.full}
+        <article className="articlePosts">
+          <img src={props.image}></img>
+          <h1>{props.title}</h1>
+          {props.full}
+        </article>
       </div>
     );
   }

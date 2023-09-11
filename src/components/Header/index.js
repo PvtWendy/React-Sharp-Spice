@@ -1,10 +1,9 @@
 import "./style.css";
-import Logo from "../../images/Logo.png";
 export default function Header() {
   return (
     <nav>
       <a href="index.html">
-        <img src={Logo}></img>
+        <img src={"/images/Logo.png"}></img>
       </a>
       <div>
         <a href="index.html" class="navItems">

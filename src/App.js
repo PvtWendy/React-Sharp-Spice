@@ -1,16 +1,10 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 import Article from "./components/Article";
 import Carousel from "./components/Carousel";
+import ControlPanel from "./components/ControlPanel";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-//TODO: Build a global image map to be able to access the images from anywhere
-import Crostini from "./images/Crostini.png";
-import Kitchen from "./images/Kitchen.png";
-import Nutrition from "./images/Nutrition.png";
-import Presentation from "./images/Presentation.png";
-import Airfryer from "./images/Airfryer.png";
-import { useState } from "react";
-import ControlPanel from "./components/ControlPanel";
 import { usePosts } from "./postsContext";
 function App() {
   //Array state for ease of access using map
@@ -29,6 +23,7 @@ function App() {
   const renderedArticles = posts.map((props, index) => (
     <Article
       image={posts[index].image}
+      title={posts[index].title}
       state={index % 2 == 0 ? "left" : "right"}
       text={posts[index].shortPost}
       full={posts[index].longPost}

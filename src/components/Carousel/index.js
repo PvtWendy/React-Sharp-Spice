@@ -1,6 +1,3 @@
-import Kitchen from "../../images/Kitchen.png";
-import Crostini from "../../images/Crostini.png";
-import Nutrition from "../../images/Nutrition.png";
 import "./style.css";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -27,7 +24,7 @@ export default function Carousel(props) {
     <article class="slider">
       <section class="slide" style={{ transform: `translateX(0%)` }}>
         <a onClick={props.first}>
-          <img src={Kitchen} alt="Red Kitchen" />
+          <img src={"/images/Kitchen.png"} alt="Red Kitchen" />
           <p>
             Unlocking Flavor with Every Hue: Discover the Magic of Color Theory
             in Culinary Delights!
@@ -36,13 +33,13 @@ export default function Carousel(props) {
       </section>
       <section class="slide" style={{ transform: `translateX(100%)` }}>
         <a onClick={props.second}>
-          <img src={Crostini} alt="Red Kitchen" />
+          <img src={"/images/Crostini.png"} alt="Red Kitchen" />
           <p>Tomato Crostini: A Bite of Pure Delight!</p>
         </a>
       </section>
       <section class="slide" style={{ transform: `translateX(200%)` }}>
         <a onClick={props.third}>
-          <img src={Nutrition} alt="Red Kitchen" />
+          <img src={"/images/Nutrition.png"} alt="Red Kitchen" />
           <p>
             Savoring Health: Unveiling the Easiest and Most Flavorful Path to
             Eating Well.
