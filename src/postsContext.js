@@ -2,7 +2,7 @@ import { createContext, useContext, useReducer } from "react";
 import { initialPosts } from "./initialPosts";
 
 const PostsContext = createContext();
-
+const initialState = initialPosts
 export const usePosts = () => {
   return useContext(PostsContext);
 };
@@ -13,9 +13,9 @@ export const PostsProvider = ({ children }) => {
     return state;
   };
 
-  const [state, dispatch] = useReducer(reducer, initialPosts);
+  const [state, dispatch] = useReducer(reducer, initialState);
   return(
-    <PostsContext.Provider valu e={{posts:state, dispatch}}>
+    <PostsContext.Provider value={{posts:state, dispatch}}>
         {children}
     </PostsContext.Provider>
   )

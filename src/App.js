@@ -9,29 +9,26 @@ import Kitchen from "./images/Kitchen.png";
 import Nutrition from "./images/Nutrition.png";
 import Presentation from "./images/Presentation.png";
 import Airfryer from "./images/Airfryer.png";
-import { posts } from "./posts";
 import { useState } from "react";
 import ControlPanel from "./components/ControlPanel";
+import { usePosts } from "./postsContext";
 function App() {
   //Array state for ease of access using map
-
   const [open, setOpen] = useState([false, false, false]);
 
   //Function to rebuild the array, updating the value specified on index
-
   const openCarousel = (index) => {
     const newOpen = [...open];
     newOpen[index] = true;
     setOpen(newOpen);
   };
-  const images = [Kitchen, Crostini, Nutrition, Presentation, Airfryer];
-
+  const {posts} = usePosts();
   //Renders articles based on how many posts there are
   //Although props counts as unused, it renders the Article props >>DO NOT REMOVE<<
 
   const renderedArticles = posts.map((props, index) => (
     <Article
-      image={images[index]}
+      image={posts[index].image}
       state={index % 2 == 0 ? "left" : "right"}
       text={posts[index].shortPost}
       full={posts[index].longPost}

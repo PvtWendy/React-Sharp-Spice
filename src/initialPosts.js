@@ -1,7 +1,7 @@
-//TODO: Always put longPost inside an article tag with the ArticlePosts tag
+//TODO: Always put longPost inside an article tag with the ArticlePosts class
 export const initialPosts = [
   {
-    image: "./images/Kitchen.png",
+    image: "../../images/Kitchen.png",
     title:
       "Unlocking Flavor with Every Hue: Discover the Magic of Color Theory in Culinary Delights!",
     shortPost: (

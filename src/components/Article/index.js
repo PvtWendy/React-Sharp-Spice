@@ -1,12 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import "./style.css";
-
-import Crostini from "../../images/Crostini.png";
-import Kitchen from "../../images/Kitchen.png";
-import Nutrition from "../..//images/Nutrition.png";
-import Presentation from "../../images/Presentation.png";
-import Airfryer from "../../images/Airfryer.png";
-
 export default function Article(props) {
   const [articleOpen, setArticleOpen] = useState(props.open);
   const [close, setClose] = useState(false);
