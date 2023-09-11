@@ -14,16 +14,21 @@ import { useState } from "react";
 import ControlPanel from "./components/ControlPanel";
 function App() {
   //Array state for ease of access using map
-  const [open, setOpen] = useState([false,false,false]);
+
+  const [open, setOpen] = useState([false, false, false]);
+
   //Function to rebuild the array, updating the value specified on index
+
   const openCarousel = (index) => {
     const newOpen = [...open];
     newOpen[index] = true;
     setOpen(newOpen);
   };
-  const images =[Kitchen,Crostini,Nutrition,Presentation,Airfryer]
+  const images = [Kitchen, Crostini, Nutrition, Presentation, Airfryer];
+
   //Renders articles based on how many posts there are
   //Although props counts as unused, it renders the Article props >>DO NOT REMOVE<<
+
   const renderedArticles = posts.map((props, index) => (
     <Article
       image={images[index]}
@@ -47,7 +52,7 @@ function App() {
         {renderedArticles}
       </section>
       <Footer />
-      <ControlPanel/>
+      <ControlPanel />
     </div>
   );
 }
