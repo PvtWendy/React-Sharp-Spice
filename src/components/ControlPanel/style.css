@@ -1,0 +1,85 @@
+.openControlPanel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: fit-content;
+  padding: 10px 30px;
+  color: white;
+  font-family: "Philosopher", sans-serif;
+  background-color: #a4193d;
+  border-radius: 5px;
+  border: 0;
+  transition: 0.2s ease-in;
+}
+.openControlPanel:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  background-color: #8b1535;
+}
+.closeControlPanel {
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
+  width: fit-content;
+  padding: 10px 30px;
+  color: white;
+  font-family: "Philosopher", sans-serif;
+  background-color: #a4193d;
+  border-radius: 5px;
+  border: 0;
+  transition: 0.2s ease-in;
+}
+.closeControlPanel:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  background-color: #8b1535;
+}
+.ControlPanel {
+  z-index: 10;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(50, 50, 50, 0.5);
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.ControlPanel div {
+  position: absolute;
+  width: 70vw;
+  height: 80vh;
+  background-color: white;
+  border-radius: 20px;
+
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+}
+
+
+
+@keyframes inAnimation {
+    0% {
+      opacity: 0;
+      visibility: hidden;
+    }
+    100% {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  
+  @keyframes outAnimation {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  

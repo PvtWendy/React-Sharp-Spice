@@ -11,6 +11,7 @@ import Presentation from "./images/Presentation.png";
 import Airfryer from "./images/Airfryer.png";
 import { posts } from "./posts";
 import { useState } from "react";
+import ControlPanel from "./components/ControlPanel";
 function App() {
   //Array state for ease of access using map
   const [open, setOpen] = useState([false,false,false]);
@@ -46,6 +47,7 @@ function App() {
         {renderedArticles}
       </section>
       <Footer />
+      <ControlPanel/>
     </div>
   );
 }
