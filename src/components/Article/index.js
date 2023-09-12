@@ -4,8 +4,6 @@ import "./style.css";
 export default function Article(props) {
   const [articleOpen, setArticleOpen] = useState(props.open);
   const [close, setClose] = useState(false);
-  const [image, setImage] = useState(null)
-  const {posts} = usePosts();
   //Fadein Fadeout Animation
   const mountedStyle = {
     animation: "inAnimation 500ms ease-in",

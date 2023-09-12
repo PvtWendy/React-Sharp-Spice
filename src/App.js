@@ -13,8 +13,10 @@ function App() {
   //Function to rebuild the array, updating the value specified on index
   const openCarousel = (index) => {
     const newOpen = [...open];
+    if (!open[index]) {
     newOpen[index] = true;
     setOpen(newOpen);
+    }
   };
   const {posts} = usePosts();
   //Renders articles based on how many posts there are
