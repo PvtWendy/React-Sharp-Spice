@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { usePosts } from "../../postsContext";
 import "./style.css";
 export default function ControlPanel() {
   const [open, setOpen] = useState(false);
   const [play, setPlay] = useState(false);
+  const {posts} = usePosts();
   const style = (state) => {
     if (state) {
       return {
@@ -26,10 +28,18 @@ export default function ControlPanel() {
       }, 200);
     }
   };
+  const postList = posts.map((props, index)=>(  
+    <article>
+      <p>{posts[index].title}</p>
+      <button>X</button>
+    </article>
+  ))
+
   if (open == true) {
     return (
       <section className="ControlPanel" style={style(play)}>
         <div>
+          {postList}
           <button
             className="closeControlPanel"
             onClick={() => playAnimation(false)}

@@ -1,14 +1,16 @@
 import "./style.css";
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { usePosts } from "../../postsContext";
 export default function Carousel(props) {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  const { posts } = usePosts();
 
   //Defines slide to navigate to
   const navigateSlides = (offset) => {
     const slides = document.querySelectorAll(".slide");
-    const newCurrentSlide =
-      (currentSlide + offset + slides.length) % slides.length;
+    const newCurrentSlide = (currentSlide + offset + slides.length) % slides.length;
     setCurrentSlide(newCurrentSlide);
   };
   //Updates slide after the async useState update
@@ -24,26 +26,20 @@ export default function Carousel(props) {
     <article class="slider">
       <section class="slide" style={{ transform: `translateX(0%)` }}>
         <a onClick={props.first}>
-          <img src={"/images/Kitchen.png"} alt="Red Kitchen" />
-          <p>
-            Unlocking Flavor with Every Hue: Discover the Magic of Color Theory
-            in Culinary Delights!
-          </p>
+          <img src={posts[0].image} alt="Red Kitchen" />
+          <p>{posts[0].title}</p>
         </a>
       </section>
       <section class="slide" style={{ transform: `translateX(100%)` }}>
         <a onClick={props.second}>
-          <img src={"/images/Crostini.png"} alt="Red Kitchen" />
-          <p>Tomato Crostini: A Bite of Pure Delight!</p>
+          <img src={posts[1].image} alt="Red Kitchen" />
+          <p>{posts[1].title}</p>
         </a>
       </section>
       <section class="slide" style={{ transform: `translateX(200%)` }}>
         <a onClick={props.third}>
-          <img src={"/images/Nutrition.png"} alt="Red Kitchen" />
-          <p>
-            Savoring Health: Unveiling the Easiest and Most Flavorful Path to
-            Eating Well.
-          </p>
+          <img src={posts[2].image} alt="Red Kitchen" />
+          <p>{posts[2].title}</p>
         </a>
       </section>
       <button class="btn btn-next" onClick={() => navigateSlides(1)}>
