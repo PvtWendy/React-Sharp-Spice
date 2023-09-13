@@ -13,6 +13,16 @@ export const PostsProvider = ({ children }) => {
   
   //Handles Actions related  to state
   const reducer = (state, action) => {
+    switch (action.type) {
+      case "DeletePost":
+        const prevstate = state
+        const newState = prevstate.filter(a => a.title != action.key)
+        return(newState)
+        break;
+    
+      default:
+        break;
+    }
     //TODO: action handlers
     return state;
   };

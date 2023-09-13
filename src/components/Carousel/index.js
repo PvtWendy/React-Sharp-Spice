@@ -21,9 +21,10 @@ export default function Carousel(props) {
       slide.style.transform = `translateX(${translateValue}%)`;
     });
   }, [currentSlide]);
-
+//TODO:Fix carousel breaking whenever there's less than 3 posts
   return (
     <article class="slider">
+      
       <section class="slide" style={{ transform: `translateX(0%)` }}>
         <a onClick={props.first}>
           <img src={posts[0].image} alt="Red Kitchen" />
