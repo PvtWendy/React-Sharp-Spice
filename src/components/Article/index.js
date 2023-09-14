@@ -40,9 +40,9 @@ export default function Article(props) {
   Conditionally rendered component, only renders when the button wasn't pressed
   And renders left and right variants based on props.state property
   */
-  if (props.state === "left" && articleOpen == false) {
+  if (articleOpen == false) {
     return (
-      <article style={close ? unmountedStyle : null}>
+      <article className={props.state == "left" ? "left" : "right"} style={close ? unmountedStyle : null}>
         <img src={props.image} />
         <div>
           {props.text}
@@ -50,17 +50,7 @@ export default function Article(props) {
         </div>
       </article>
     );
-  } else if (props.state === "right" && articleOpen == false) {
-    return (
-      <article style={close ? unmountedStyle : null}>
-        <div>
-          {props.text}
-          <button onClick={() => closeBtn()}>Read More</button>
-        </div>
-        <img src={props.image} />
-      </article>
-    );
-  } else {
+  }else {
     return (
       <div ref={scrollRef} style={articleOpen && mountedStyle}>
         <article className="articlePosts">

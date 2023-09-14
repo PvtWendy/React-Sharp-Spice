@@ -4,7 +4,7 @@ import "./style.css";
 export default function ControlPanel() {
   const [open, setOpen] = useState(false);
   const [play, setPlay] = useState(false);
-  const {posts} = usePosts();
+  const {posts,dispatch} = usePosts();
   const style = (state) => {
     if (state) {
       return {
@@ -17,6 +17,7 @@ export default function ControlPanel() {
       };
     }
   };
+  const clickHandler = index=>{dispatch({type: "DeletePost", key: posts[index].title})}
   const playAnimation = (state) => {
     if (state) {
       setPlay(state);
@@ -31,7 +32,7 @@ export default function ControlPanel() {
   const postList = posts.map((props, index)=>(  
     <article>
       <p>{posts[index].title}</p>
-      <button>X</button>
+      <button onClick={()=>clickHandler(index)}>X</button>
     </article>
   ))
 
