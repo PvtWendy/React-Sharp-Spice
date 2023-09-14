@@ -60,6 +60,12 @@ export default function Carousel(props) {
               <p>{posts[1].title}</p>
             </a>
           </section>
+          <button class="btn btn-next" onClick={() => navigateSlides(1)}>
+            {">"}
+          </button>
+          <button class="btn btn-prev" onClick={() => navigateSlides(-1)}>
+            {"<"}
+          </button>
         </article>
       );
     default:
