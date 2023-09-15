@@ -54,16 +54,16 @@ export default function Carousel(props) {
               <p>{posts[0].title}</p>
             </a>
           </section>
-          <section class="slide" style={{ transform: `translateX(100%)` }}>
+          <section className="slide" style={{ transform: `translateX(100%)` }}>
             <a onClick={props.second}>
               <img src={posts[1].image} alt="Red Kitchen" />
               <p>{posts[1].title}</p>
             </a>
           </section>
-          <button class="btn btn-next" onClick={() => navigateSlides(1)}>
+          <button className="btn btn-next" onClick={() => navigateSlides(1)}>
             {">"}
           </button>
-          <button class="btn btn-prev" onClick={() => navigateSlides(-1)}>
+          <button className="btn btn-prev" onClick={() => navigateSlides(-1)}>
             {"<"}
           </button>
         </article>
