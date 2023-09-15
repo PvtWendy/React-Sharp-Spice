@@ -39,7 +39,7 @@ export default function ControlPanel() {
       setPlay(state);
       setTimeout(() => {
         setOpen(state);
-        setOption(null)
+        setOption(null);
       }, 200);
     }
   };
@@ -59,21 +59,29 @@ export default function ControlPanel() {
             {deletePostList}
             <button className="closeControlPanel" onClick={() => playAnimation(false)}>
               Close
-              
+            </button>
+          </div>
+        );
+      case "add":
+        return (
+          <div>
+            <button className="closeControlPanel" onClick={() => playAnimation(false)}>
+              Close
             </button>
           </div>
         );
       default:
         return (
           <div>
-            <button onClick={() => setOption("delete")}>Delete</button>
+            <button onClick={() => setOption("delete")}>Delete Post</button>
+            <button onClick={() => setOption("add")}>Add Post</button>
             <button className="closeControlPanel" onClick={() => playAnimation(false)}>
               Close
             </button>
           </div>
         );
     }
-  }
+  };
   //Conditional rendering of control panel
   if (open == true) {
     return (
