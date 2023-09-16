@@ -31,8 +31,9 @@ export default function ControlPanel() {
   };
   //Reducer function to reset post
   const resetHandler = () => {
-    dispatch({type:"ResetPosts"})
-  }
+    alert("Posts returned to original state");
+    dispatch({ type: "ResetPosts" });
+  };
   //Makes animation play
   const playAnimation = (state) => {
     if (state) {
@@ -63,6 +64,9 @@ export default function ControlPanel() {
             <button className="closeControlPanel" onClick={() => playAnimation(false)}>
               Close
             </button>
+            <button className="backControlPanel" onClick={() => setOption("default")}>
+              Back
+            </button>
           </div>
         );
       case "add":
@@ -71,6 +75,9 @@ export default function ControlPanel() {
             <button className="closeControlPanel" onClick={() => playAnimation(false)}>
               Close
             </button>
+            <button className="backControlPanel" onClick={() => setOption("default")}>
+              Back
+            </button>
           </div>
         );
       default:
@@ -78,7 +85,7 @@ export default function ControlPanel() {
           <div>
             <button onClick={() => setOption("delete")}>Delete Post</button>
             <button onClick={() => setOption("add")}>Add Post</button>
-            <button onClick={()=> resetHandler()}>Reset Posts</button>
+            <button onClick={() => resetHandler()}>Reset Posts</button>
             <button className="closeControlPanel" onClick={() => playAnimation(false)}>
               Close
             </button>
