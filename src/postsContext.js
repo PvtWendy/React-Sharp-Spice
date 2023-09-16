@@ -21,6 +21,8 @@ export const PostsProvider = ({ children }) => {
       case "AddPost":
         console.log("post added");
         break;
+      case "ResetPosts":
+        state = initialPosts;
       default:
         break;
     }

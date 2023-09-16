@@ -29,7 +29,10 @@ export default function ControlPanel() {
   const addHandler = () => {
     dispatch({ type: "AddPost" });
   };
-
+  //Reducer function to reset post
+  const resetHandler = () => {
+    dispatch({type:"ResetPosts"})
+  }
   //Makes animation play
   const playAnimation = (state) => {
     if (state) {
@@ -75,6 +78,7 @@ export default function ControlPanel() {
           <div>
             <button onClick={() => setOption("delete")}>Delete Post</button>
             <button onClick={() => setOption("add")}>Add Post</button>
+            <button onClick={()=> resetHandler()}>Reset Posts</button>
             <button className="closeControlPanel" onClick={() => playAnimation(false)}>
               Close
             </button>

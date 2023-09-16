@@ -1,4 +1,4 @@
-//TODO: Always put longPost inside an article tag with the ArticlePosts class
+//TODO: Create a key named "state" that will run the opening animation, instead of using the Article useState to avoid problems
 export const initialPosts = [
   {
     image: "/images/Kitchen.png",
