@@ -2,6 +2,7 @@
 export const initialPosts = [
   {
     image: "/images/Kitchen.png",
+    state: false,
     title:
       "Unlocking Flavor with Every Hue: Discover the Magic of Color Theory in Culinary Delights!",
     shortPost: (
@@ -108,6 +109,7 @@ export const initialPosts = [
   },
   {
     image: "/images/Crostini.png",
+    state: false,
     title: "Tomato Crostini: A Bite of Pure Delight!",
     shortPost: (
       <div>
@@ -219,6 +221,7 @@ export const initialPosts = [
   },
   {
     image: "/images/Nutrition.png",
+    state: false,
     title: "Savoring Health: Unveiling the Easiest and Most Flavorful Path to Eating Well",
     shortPost: (
       <div>
@@ -327,6 +330,7 @@ export const initialPosts = [
   },
   {
     image: "/images/Presentation.png",
+    state: false,
     title: "The Art of Food Presentation: Making Every Dish a Visual Delight",
     shortPost: (
       <div>
@@ -463,6 +467,7 @@ export const initialPosts = [
 
   {
     image: "/images/Airfryer.png",
+    state: false,
     title: "Mastering the Art of Cooking with Air Fryers: A Comprehensive Guide",
     shortPost: (
       <div>
