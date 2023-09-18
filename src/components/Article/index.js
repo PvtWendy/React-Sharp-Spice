@@ -2,8 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { usePosts } from "../../postsContext";
 import "./style.css";
 export default function Article(props) {
-  const [articleOpen, setArticleOpen] = useState(props.open);
-  const [close, setClose] = useState(false);
+  const { posts, dispatch } = usePosts();
   //Fadein Fadeout Animation
   const mountedStyle = {
     animation: "inAnimation 500ms ease-in",
@@ -16,33 +15,24 @@ export default function Article(props) {
 
   //Effect to scroll to ref when component changes
   useEffect(() => {
-    if (props.open != null && props.open == true) {
-      setArticleOpen(props.open);
-    }
     if (scrollRef.current) {
       scrollRef.current.scrollIntoView({ behavior: "smooth" }, true);
     }
   });
+
   //Function to play Fadeout animation and setup Fadein
   const closeBtn = () => {
-    setClose(true);
-    setTimeout(() => {
-      //Only allows one setOpen to update, or else ref becomes latest instance
-      if (props.setOpen != null) {
-        props.setOpen(true);
-      } else {
-        setArticleOpen(true);
-      }
-    }, 500);
+    dispatch({ type: "OpenPost", index:props.index});
   };
 
   /*
   Conditionally rendered component, only renders when the button wasn't pressed
   And renders left and right variants based on props.state property
   */
-  if (articleOpen == false) {
+
+  if (!posts[props.index].state) {
     return (
-      <article className={props.state == "left" ? "left" : "right"} style={close ? unmountedStyle : null}>
+      <article className={props.state == "left" ? "left" : "right"} style={posts[props.index].state ? unmountedStyle : null}>
         <img src={props.image} />
         <div>
           {props.text}
@@ -52,7 +42,7 @@ export default function Article(props) {
     );
   }else {
     return (
-      <div ref={scrollRef} style={articleOpen && mountedStyle}>
+      <div ref={scrollRef} style={posts[props.index].state ? mountedStyle : null}>
         <article className="articlePosts">
           <img src={props.image}></img>
           <h1>{props.title}</h1>

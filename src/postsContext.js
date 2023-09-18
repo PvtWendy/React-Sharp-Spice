@@ -14,24 +14,35 @@ export const PostsProvider = ({ children }) => {
   const reducer = (state, action) => {
     switch (action.type) {
       case "DeletePost":
-        const prevstate = state;
-        const newState = prevstate.filter((a) => a.title != action.key);
+        const prevState = state;
+        const newState = [...prevState].filter((a) => a.title !== action.key);
         return newState;
         break;
+      case "OpenPost":
+        const invertedState = state.map((post, index) => {
+          if (index === action.index) {
+            return { ...post, state: true };
+          } else {
+            return post;
+          }
+        });
+        return invertedState;
       case "AddPost":
         console.log("post added");
         break;
       case "ResetPosts":
-        state = initialPosts;
+        console.log(initialPosts);
+        return initialPosts;
       default:
         break;
     }
-    //TODO: action handlers
     return state;
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <PostsContext.Provider value={{ posts: state, dispatch }}>{children}</PostsContext.Provider>
+    <PostsContext.Provider value={{ posts: state, dispatch }}>
+      {children}
+    </PostsContext.Provider>
   );
 };

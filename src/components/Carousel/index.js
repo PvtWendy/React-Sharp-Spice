@@ -5,7 +5,7 @@ import { usePosts } from "../../postsContext";
 export default function Carousel(props) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const { posts } = usePosts();
+  const { posts, dispatch } = usePosts();
 
   //Defines slide to navigate to
   const navigateSlides = (offset) => {
