@@ -7,6 +7,9 @@ export default function Carousel(props) {
 
   const { posts, dispatch } = usePosts();
 
+  const closeBtn = index => {
+    dispatch({ type: "OpenPost", index:index});
+  };
   //Defines slide to navigate to
   const navigateSlides = (offset) => {
     const slides = document.querySelectorAll(".slide");
@@ -37,7 +40,7 @@ export default function Carousel(props) {
       return (
         <article className="slider">
           <section className="slide">
-            <a onClick={props.first}>
+            <a onClick={()=>closeBtn(0)}>
               <img src={posts[0].image} alt="Red Kitchen" />
               <p>{posts[0].title}</p>
             </a>
@@ -49,13 +52,13 @@ export default function Carousel(props) {
       return (
         <article className="slider" style={{ transform: `translateX(0%)` }}>
           <section className="slide">
-            <a onClick={props.first}>
+            <a onClick={()=>closeBtn(0)}>
               <img src={posts[0].image} alt="Red Kitchen" />
               <p>{posts[0].title}</p>
             </a>
           </section>
           <section className="slide" style={{ transform: `translateX(100%)` }}>
-            <a onClick={props.second}>
+            <a onClick={()=>closeBtn(1)}>
               <img src={posts[1].image} alt="Red Kitchen" />
               <p>{posts[1].title}</p>
             </a>
@@ -72,19 +75,19 @@ export default function Carousel(props) {
       return (
         <article class="slider">
           <section class="slide" style={{ transform: `translateX(0%)` }}>
-            <a onClick={props.first}>
+            <a onClick={()=>closeBtn(0)}>
               <img src={posts[0].image} alt="Red Kitchen" />
               <p>{posts[0].title}</p>
             </a>
           </section>
           <section class="slide" style={{ transform: `translateX(100%)` }}>
-            <a onClick={props.second}>
+            <a onClick={()=>closeBtn(1)}>
               <img src={posts[1].image} alt="Red Kitchen" />
               <p>{posts[1].title}</p>
             </a>
           </section>
           <section class="slide" style={{ transform: `translateX(200%)` }}>
-            <a onClick={props.third}>
+            <a onClick={()=>closeBtn(2)}>
               <img src={posts[2].image} alt="Red Kitchen" />
               <p>{posts[2].title}</p>
             </a>
