@@ -1,4 +1,10 @@
+@media (max-width: 1024px) {
+  .openControlPanel{
+    visibility: hidden !important;
+  }
+}
 .openControlPanel {
+  visibility: visible;
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -10,6 +16,7 @@
   border-radius: 5px;
   border: 0;
   transition: 0.2s ease-in;
+  margin: 0 !important;
 }
 .openControlPanel:hover {
   transform: scale(1.1);
@@ -17,23 +24,27 @@
   background-color: #8b1535;
 }
 .closeControlPanel {
+  margin: 0 !important;
   position: absolute;
   bottom: 20px;
   right: 40px;
   width: fit-content;
   padding: 10px 30px;
-  color: white;
-  font-family: "Philosopher", sans-serif;
-  background-color: #a4193d;
-  border-radius: 5px;
   border: 0;
   transition: 0.2s ease-in;
 }
-.closeControlPanel:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-  background-color: #8b1535;
+
+.backControlPanel{
+  margin: 0 !important;
+  position: absolute;
+  bottom: 20px;
+  left: 40px;
+  width: fit-content;
+  padding: 10px 30px;
+  border: 0;
+  transition: 0.2s ease-in;
 }
+
 .ControlPanel {
   z-index: 10;
   position: fixed;
@@ -52,7 +63,6 @@
   height: 80vh;
   background-color: white;
   border-radius: 20px;
-
   left: 0;
   bottom: 0;
   right: 0;
@@ -61,6 +71,30 @@
 }
 .ControlPanel article{
   display: flex;
+  justify-content: space-between;
+  
+}
+.ControlPanel button{
+  font-family: "Philosopher", sans-serif;
+  margin: 20px 20px;
+  color: white;
+  padding: 10px 30px;
+  background-color: #a4193d;
+  border-radius: 5px;
+  border: 0;
+  transition: 0.2s ease-in;
+}
+.ControlPanel p{
+  overflow: hidden;
+  vertical-align: middle;
+  font-family: "Philosopher", sans-serif;
+  height: fit-content;
+  margin: auto 20px;
+}
+.ControlPanel button:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+  background-color: #8b1535;
 }
 
 

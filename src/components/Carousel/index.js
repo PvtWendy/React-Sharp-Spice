@@ -21,34 +21,82 @@ export default function Carousel(props) {
       slide.style.transform = `translateX(${translateValue}%)`;
     });
   }, [currentSlide]);
-//TODO:Fix carousel breaking whenever there's less than 3 posts
-  return (
-    <article class="slider">
-      
-      <section class="slide" style={{ transform: `translateX(0%)` }}>
-        <a onClick={props.first}>
-          <img src={posts[0].image} alt="Red Kitchen" />
-          <p>{posts[0].title}</p>
-        </a>
-      </section>
-      <section class="slide" style={{ transform: `translateX(100%)` }}>
-        <a onClick={props.second}>
-          <img src={posts[1].image} alt="Red Kitchen" />
-          <p>{posts[1].title}</p>
-        </a>
-      </section>
-      <section class="slide" style={{ transform: `translateX(200%)` }}>
-        <a onClick={props.third}>
-          <img src={posts[2].image} alt="Red Kitchen" />
-          <p>{posts[2].title}</p>
-        </a>
-      </section>
-      <button class="btn btn-next" onClick={() => navigateSlides(1)}>
-        {">"}
-      </button>
-      <button class="btn btn-prev" onClick={() => navigateSlides(-1)}>
-        {"<"}
-      </button>
-    </article>
-  );
+
+  switch (posts.length) {
+    case 0:
+      return (
+        <article className="slider">
+          <section className="slide">
+            <img src="/images/Logo.png"></img>
+            <p>Placeholder</p>
+          </section>
+        </article>
+      );
+      break;
+    case 1:
+      return (
+        <article className="slider">
+          <section className="slide">
+            <a onClick={props.first}>
+              <img src={posts[0].image} alt="Red Kitchen" />
+              <p>{posts[0].title}</p>
+            </a>
+          </section>
+        </article>
+      );
+      break;
+    case 2:
+      return (
+        <article className="slider" style={{ transform: `translateX(0%)` }}>
+          <section className="slide">
+            <a onClick={props.first}>
+              <img src={posts[0].image} alt="Red Kitchen" />
+              <p>{posts[0].title}</p>
+            </a>
+          </section>
+          <section className="slide" style={{ transform: `translateX(100%)` }}>
+            <a onClick={props.second}>
+              <img src={posts[1].image} alt="Red Kitchen" />
+              <p>{posts[1].title}</p>
+            </a>
+          </section>
+          <button className="btn btn-next" onClick={() => navigateSlides(1)}>
+            {">"}
+          </button>
+          <button className="btn btn-prev" onClick={() => navigateSlides(-1)}>
+            {"<"}
+          </button>
+        </article>
+      );
+    default:
+      return (
+        <article class="slider">
+          <section class="slide" style={{ transform: `translateX(0%)` }}>
+            <a onClick={props.first}>
+              <img src={posts[0].image} alt="Red Kitchen" />
+              <p>{posts[0].title}</p>
+            </a>
+          </section>
+          <section class="slide" style={{ transform: `translateX(100%)` }}>
+            <a onClick={props.second}>
+              <img src={posts[1].image} alt="Red Kitchen" />
+              <p>{posts[1].title}</p>
+            </a>
+          </section>
+          <section class="slide" style={{ transform: `translateX(200%)` }}>
+            <a onClick={props.third}>
+              <img src={posts[2].image} alt="Red Kitchen" />
+              <p>{posts[2].title}</p>
+            </a>
+          </section>
+          <button class="btn btn-next" onClick={() => navigateSlides(1)}>
+            {">"}
+          </button>
+          <button class="btn btn-prev" onClick={() => navigateSlides(-1)}>
+            {"<"}
+          </button>
+        </article>
+      );
+      break;
+  }
 }
