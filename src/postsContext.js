@@ -17,7 +17,6 @@ export const PostsProvider = ({ children }) => {
         const prevState = state;
         const newState = [...prevState].filter((a) => a.title !== action.key);
         return newState;
-        break;
       case "OpenPost":
         const invertedState = state.map((post, index) => {
           if (index === action.index) {
@@ -33,8 +32,6 @@ export const PostsProvider = ({ children }) => {
       case "ResetPosts":
         console.log(initialPosts);
         return initialPosts;
-      default:
-        break;
     }
     return state;
   };

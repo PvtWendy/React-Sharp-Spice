@@ -3,6 +3,7 @@ import { usePosts } from "../../postsContext";
 import "./style.css";
 export default function Article(props) {
   const { posts, dispatch } = usePosts();
+
   //Fadein Fadeout Animation
   const mountedStyle = {
     animation: "inAnimation 500ms ease-in",
@@ -13,14 +14,14 @@ export default function Article(props) {
   };
   const scrollRef = useRef(null);
 
-  //Effect to scroll to ref when component changes
+  //Effect to scroll to ref when the state of the current post changes
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollIntoView({ behavior: "smooth" }, true);
-    }
-  });
+      if (scrollRef.current) {
+        scrollRef.current.scrollIntoView({ behavior: "smooth" }, true);
+      }
+  },[posts[props.index].state]);
 
-  //Function to play Fadeout animation and setup Fadein
+  //Function to open the current post
   const closeBtn = () => {
     dispatch({ type: "OpenPost", index:props.index});
   };

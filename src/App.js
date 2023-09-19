@@ -7,14 +7,13 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { usePosts } from "./postsContext";
 function App() {
-  //Function to rebuild the array, updating the value specified on index
-
   const { posts } = usePosts();
+
   //Renders articles based on how many posts there are
   //Although props counts as unused, it renders the Article props >>DO NOT REMOVE<<
-
   const renderedArticles = posts.map((props, index) => (
     <Article
+      key = {`Article${index}`}
       image={posts[index].image}
       title={posts[index].title}
       state={index % 2 == 0 ? "left" : "right"}
@@ -26,7 +25,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Carousel />
+      <Carousel/>
       <section className="articleContainer" id="postsContainer">
         {renderedArticles}
       </section>
