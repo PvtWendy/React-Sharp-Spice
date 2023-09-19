@@ -27,7 +27,7 @@ export const PostsProvider = ({ children }) => {
         });
         return invertedState;
       case "AddPost":
-        console.log("post added");
+        return [...state, action.data]
         break;
       case "ResetPosts":
         console.log(initialPosts);
