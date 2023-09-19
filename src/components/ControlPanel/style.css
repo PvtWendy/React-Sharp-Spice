@@ -1,5 +1,5 @@
 @media (max-width: 1024px) {
-  .openControlPanel{
+  .openControlPanel {
     visibility: hidden !important;
   }
 }
@@ -34,7 +34,7 @@
   transition: 0.2s ease-in;
 }
 
-.backControlPanel{
+.backControlPanel {
   margin: 0 !important;
   position: absolute;
   bottom: 20px;
@@ -69,12 +69,13 @@
   top: 0;
   margin: auto;
 }
-.ControlPanel article{
+
+.ControlPanel article {
   display: flex;
   justify-content: space-between;
-  
 }
-.ControlPanel form{
+
+.ControlPanel form {
   margin: 0 auto;
   width: fit-content;
   gap: 10px;
@@ -87,11 +88,11 @@
   align-items: center;
   text-align: center;
 }
-.ControlPanel form img{
+.ControlPanel form img {
   width: 100px;
   margin: 0 auto;
 }
-#UploadButton{
+#UploadButton {
   font-family: "Philosopher", sans-serif;
   margin: 20px 20px;
   color: white;
@@ -101,12 +102,12 @@
   border: 0;
   transition: 0.2s ease-in;
 }
-#UploadButton:hover{
+#UploadButton:hover {
   transform: scale(1.1);
   cursor: pointer;
   background-color: #8b1535;
 }
-.ControlPanel button{
+.ControlPanel button {
   font-family: "Philosopher", sans-serif;
   margin: 20px 20px;
   color: white;
@@ -116,38 +117,52 @@
   border: 0;
   transition: 0.2s ease-in;
 }
-.ControlPanel p{
+.ControlPanel p {
   overflow: hidden;
   vertical-align: middle;
   font-family: "Philosopher", sans-serif;
   height: fit-content;
   margin: auto 20px;
 }
-.ControlPanel button:hover{
+.ControlPanel button:hover {
   transform: scale(1.1);
   cursor: pointer;
   background-color: #8b1535;
 }
 
-
 @keyframes inAnimation {
-    0% {
-      opacity: 0;
-      visibility: hidden;
-    }
-    100% {
-      opacity: 1;
-      visibility: visible;
-    }
+  0% {
+    opacity: 0;
+    visibility: hidden;
   }
-  
-  @keyframes outAnimation {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      visibility: hidden;
-    }
+  100% {
+    opacity: 1;
+    visibility: visible;
   }
-  
+}
+
+@keyframes outAnimation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.deleteContainer {
+  position: relative !important;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  margin-top: 10px !important;
+  width: 98% !important;
+  height: 85% !important;
+}
+div::-webkit-scrollbar {
+  width: 10px;
+}
+div::-webkit-scrollbar-thumb {
+  background: #a4193d;
+  border-radius: 50px;
+}

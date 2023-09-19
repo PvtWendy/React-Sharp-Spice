@@ -72,7 +72,7 @@ export default function ControlPanel() {
 
     //Resets formData after a dispatch
     setFormData({ title: "", image: null, shortPost: null, longPost: null });
-
+    setImageUrl(null)
     //Closes Form after upload
     playAnimation(false);
   };
@@ -128,7 +128,10 @@ export default function ControlPanel() {
       case "delete":
         return (
           <div>
+            <div className="deleteContainer">
             {deletePostList}
+            </div>
+            
             <button
               className="closeControlPanel"
               onClick={() => playAnimation(false)}
@@ -176,7 +179,7 @@ export default function ControlPanel() {
                 />
               </section>
               <section>
-                <label>Large Text:</label><br/>
+                <label>Short Post:</label><br/>
                 <textarea
                   value={formData.largeText}
                   onChange={handleShortPostChange}
