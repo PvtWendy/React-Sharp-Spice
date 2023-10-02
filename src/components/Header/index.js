@@ -1,20 +1,20 @@
 import "./style.css";
-export default function Header() {
+export default function Header(props) {
   return (
     <nav>
-      <a href="index.html">
+      <button onClick={props.Home}>
         <img src={"/images/Logo.png"}></img>
-      </a>
+      </button>
       <div>
-        <a href="index.html" class="navItems">
+        <button onClick={props.Home} class="navItems">
           Home
-        </a>
-        <a href="contact.html" class="navItems">
+        </button>
+        <button onClick={props.Contact} class="navItems">
           Contact
-        </a>
-        <a href="about.html" class="navItems">
+        </button>
+        <button onClick={props.About} class="navItems">
           About
-        </a>
+        </button>
       </div>
     </nav>
   );
