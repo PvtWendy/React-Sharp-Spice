@@ -5,7 +5,7 @@ export default function ControlPanel() {
   const [open, setOpen] = useState(false);
   const [play, setPlay] = useState(false);
   const [option, setOption] = useState();
-  const [newFormOption, setNewFormOption] = useState();
+  const [newFormOption, setNewFormOption] = useState("title");
   const { posts, dispatch } = usePosts();
   const [imageUrl, setImageUrl] = useState();
   const [longPostElements, setLongPostElements] = useState([]);
@@ -176,12 +176,14 @@ export default function ControlPanel() {
       largeText: e.target.value,
     });
   };
+
   //Function to handle changes in longePost inputs
   const handleLongPostChange = (index, field, value) => {
     const updatedLongPostElements = [...longPostElements];
     updatedLongPostElements[index][field] = value;
     setLongPostElements(updatedLongPostElements);
   };
+
   //Function to render the Control option that the user selects
   const optionRenderer = () => {
     switch (option) {
@@ -204,9 +206,10 @@ export default function ControlPanel() {
             </button>
           </div>
         );
+
       case "add":
         return (
-          <div>
+          <div className="addContainer">
             <form onSubmit={addHandler}>
               {imageUrl ? (
                 <section>
@@ -273,6 +276,9 @@ export default function ControlPanel() {
                           ? "Title:"
                           : "Subtitle:"}
                       </label>
+
+                      <br />
+
                       <input
                         type="text"
                         value={longPostsElement.text}
@@ -283,7 +289,11 @@ export default function ControlPanel() {
                     </section>
                   )}
                   <section>
+
                     <label>Paragraph:</label>
+
+                    <br />
+
                     <textarea
                       value={longPostsElement.content}
                       onChange={(e) =>
