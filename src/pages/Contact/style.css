@@ -1,0 +1,29 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: fit-content;
+    margin: 150px auto;
+    border: 1px solid #ccc;
+    padding: 100px 150px;
+    border-radius: 20px;
+    font-family: "Philosopher", sans-serif;
+  }
+  
+  form label {
+    color: #a4193d;
+  }
+  
+  #button {
+    font-family: "Philosopher", sans-serif;
+    color: white;
+    background-color: #a4193d;
+    border: 0;
+    padding: 10px 25px;
+    border-radius: 5px;
+  }
+  
+  #button:hover {
+    background-color: #8b1535;
+    cursor: pointer;
+  }

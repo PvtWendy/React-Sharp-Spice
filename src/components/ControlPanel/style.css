@@ -1,0 +1,184 @@
+@media (max-width: 1024px) {
+  .openControlPanel {
+    visibility: hidden !important;
+  }
+}
+.openControlPanel {
+  visibility: visible;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: fit-content;
+  padding: 10px 30px;
+  color: white;
+  font-family: "Philosopher", sans-serif;
+  background-color: #a4193d;
+  border-radius: 5px;
+  border: 0;
+  transition: 0.2s ease-in;
+  margin: 0 !important;
+}
+.openControlPanel:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  background-color: #8b1535;
+}
+.closeControlPanel {
+  margin: 0 !important;
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
+  width: fit-content;
+  padding: 10px 30px;
+  border: 0;
+  transition: 0.2s ease-in;
+}
+
+.backControlPanel {
+  margin: 0 !important;
+  position: absolute;
+  bottom: 20px;
+  left: 40px;
+  width: fit-content;
+  padding: 10px 30px;
+  border: 0;
+  transition: 0.2s ease-in;
+}
+
+.ControlPanel {
+  z-index: 10;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(50, 50, 50, 0.5);
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.ControlPanel div {
+  position: absolute;
+  width: 70vw;
+  height: 80vh;
+  background-color: white;
+  border-radius: 20px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+}
+
+.ControlPanel article {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ControlPanel form {
+  margin: 0 auto;
+  width: fit-content;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+  overflow: auto;
+  height: 100%;
+  vertical-align: middle;
+  align-items: center;
+  text-align: center;
+}
+.ControlPanel form img {
+  width: 100px;
+  margin: 0 auto;
+}
+#UploadButton {
+  font-family: "Philosopher", sans-serif;
+  margin: 20px 20px;
+  color: white;
+  padding: 10px 30px;
+  background-color: #a4193d;
+  border-radius: 5px;
+  border: 0;
+  transition: 0.2s ease-in;
+}
+#UploadButton:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  background-color: #8b1535;
+}
+.ControlPanel button {
+  font-family: "Philosopher", sans-serif;
+  margin: 20px 20px;
+  color: white;
+  padding: 10px 30px;
+  background-color: #a4193d;
+  border-radius: 5px;
+  border: 0;
+  transition: 0.2s ease-in;
+}
+.ControlPanel p {
+  overflow: hidden;
+  vertical-align: middle;
+  font-family: "Philosopher", sans-serif;
+  height: fit-content;
+  margin: auto 20px;
+}
+.ControlPanel button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  background-color: #8b1535;
+}
+
+@keyframes inAnimation {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes outAnimation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.deleteContainer {
+  position: relative !important;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  margin-top: 10px !important;
+  width: 98% !important;
+  height: 85% !important;
+}
+div::-webkit-scrollbar {
+  width: 10px;
+}
+div::-webkit-scrollbar-thumb {
+  background: #a4193d;
+  border-radius: 50px;
+}
+.addContainer{
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+form::-webkit-scrollbar {
+  width: 10px;
+}
+form::-webkit-scrollbar-thumb {
+  background: #a4193d;
+  border-radius: 50px;
+}
+form{
+  border: 0 !important;
+}

@@ -1,16 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import { usePosts } from "../../postsContext";
 import "./style.css";
-
-import Crostini from "../../images/Crostini.png";
-import Kitchen from "../../images/Kitchen.png";
-import Nutrition from "../..//images/Nutrition.png";
-import Presentation from "../../images/Presentation.png";
-import Airfryer from "../../images/Airfryer.png";
-import userEvent from "@testing-library/user-event";
-
 export default function Article(props) {
-  const [articleOpen, setArticleOpen] = useState(props.open);
-  const [close, setClose] = useState(false);
+  const { posts, dispatch } = usePosts();
+
   //Fadein Fadeout Animation
   const mountedStyle = {
     animation: "inAnimation 500ms ease-in",
@@ -20,33 +13,27 @@ export default function Article(props) {
     animationFillMode: "forwards",
   };
   const scrollRef = useRef(null);
-  //Effect to scroll to ref when component changes
+
+  //Effect to scroll to ref when the state of the current post changes
   useEffect(() => {
-    if (props.open != null && props.open == true) {
-      setArticleOpen(props.open);
-    }
-    if (scrollRef.current) {
-      scrollRef.current.scrollIntoView({ behavior: "smooth" }, true);
-    }
-  });
-  //Function to play Fadeout animation and setup Fadein
-  const closeBtn = () => {
-    setClose(true);
-    setTimeout(() => {
-      setArticleOpen(true);
-      if (props.setOpen != null) {
-        props.setOpen(true);
+      if (scrollRef.current) {
+        scrollRef.current.scrollIntoView({ behavior: "smooth" }, true);
       }
-    }, 500);
+  },[posts[props.index].state]);
+
+  //Function to open the current post
+  const closeBtn = () => {
+    dispatch({ type: "OpenPost", index:props.index});
   };
 
   /*
   Conditionally rendered component, only renders when the button wasn't pressed
   And renders left and right variants based on props.state property
   */
-  if (props.state === "left" && articleOpen == false) {
+
+  if (!posts[props.index].state) {
     return (
-      <article id={props.key} style={close ? unmountedStyle : null}>
+      <article className={props.state == "left" ? "left" : "right"} style={posts[props.index].state ? unmountedStyle : null}>
         <img src={props.image} />
         <div>
           {props.text}
@@ -54,20 +41,14 @@ export default function Article(props) {
         </div>
       </article>
     );
-  } else if (props.state === "right" && articleOpen == false) {
+  }else {
     return (
-      <article id={props.key} style={close ? unmountedStyle : null}>
-        <div>
-          {props.text}
-          <button onClick={() => closeBtn()}>Read More</button>
-        </div>
-        <img src={props.image} />
-      </article>
-    );
-  } else {
-    return (
-      <div ref={scrollRef} style={articleOpen && mountedStyle}>
-        {props.full}
+      <div ref={scrollRef} style={posts[props.index].state ? mountedStyle : null}>
+        <article className="articlePosts">
+          <img src={props.image}></img>
+          <h1>{props.title}</h1>
+          {props.full}
+        </article>
       </div>
     );
   }

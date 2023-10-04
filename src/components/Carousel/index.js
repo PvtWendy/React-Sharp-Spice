@@ -1,19 +1,23 @@
-import Kitchen from "../../images/Kitchen.png";
-import Crostini from "../../images/Crostini.png";
-import Nutrition from "../../images/Nutrition.png";
 import "./style.css";
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { usePosts } from "../../postsContext";
 export default function Carousel(props) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { posts, dispatch } = usePosts();
+
+  //Dispatches function to open post
+  const closeBtn = (index) => {
+    dispatch({ type: "OpenPost", index: index });
+  };
 
   //Defines slide to navigate to
   const navigateSlides = (offset) => {
     const slides = document.querySelectorAll(".slide");
-    const newCurrentSlide =
-      (currentSlide + offset + slides.length) % slides.length;
+    const newCurrentSlide = (currentSlide + offset + slides.length) % slides.length;
     setCurrentSlide(newCurrentSlide);
   };
+
   //Updates slide after the async useState update
   useEffect(() => {
     const slides = document.querySelectorAll(".slide");
@@ -23,38 +27,89 @@ export default function Carousel(props) {
     });
   }, [currentSlide]);
 
-  return (
-    <article class="slider">
-      <section class="slide" style={{ transform: `translateX(0%)` }}>
-        <a onClick={props.first}>
-          <img src={Kitchen} alt="Red Kitchen" />
-          <p>
-            Unlocking Flavor with Every Hue: Discover the Magic of Color Theory
-            in Culinary Delights!
-          </p>
-        </a>
-      </section>
-      <section class="slide" style={{ transform: `translateX(100%)` }}>
-        <a onClick={props.second}>
-          <img src={Crostini} alt="Red Kitchen" />
-          <p>Tomato Crostini: A Bite of Pure Delight!</p>
-        </a>
-      </section>
-      <section class="slide" style={{ transform: `translateX(200%)` }}>
-        <a onClick={props.third}>
-          <img src={Nutrition} alt="Red Kitchen" />
-          <p>
-            Savoring Health: Unveiling the Easiest and Most Flavorful Path to
-            Eating Well.
-          </p>
-        </a>
-      </section>
-      <button class="btn btn-next" onClick={() => navigateSlides(1)}>
-        {">"}
-      </button>
-      <button class="btn btn-prev" onClick={() => navigateSlides(-1)}>
-        {"<"}
-      </button>
-    </article>
-  );
+  //Conditional Rendering for Carousel
+  switch (posts.length) {
+    //Renders placeholder post
+    case 0:
+      return (
+        <article className="slider">
+          <section className="slide">
+            <img src="/images/Logo.png"></img>
+            <p>Placeholder</p>
+          </section>
+        </article>
+      );
+      break;
+
+    //Renders when there is 1 post
+    case 1:
+      return (
+        <article className="slider">
+          <section className="slide">
+            <a onClick={() => closeBtn(0)}>
+              <img src={posts[0].image} alt="Red Kitchen" />
+              <p>{posts[0].title}</p>
+            </a>
+          </section>
+        </article>
+      );
+      break;
+
+    //Renders when there are 2 posts
+    case 2:
+      return (
+        <article className="slider" style={{ transform: `translateX(0%)` }}>
+          <section className="slide">
+            <a onClick={() => closeBtn(0)}>
+              <img src={posts[0].image} alt="Red Kitchen" />
+              <p>{posts[0].title}</p>
+            </a>
+          </section>
+          <section className="slide" style={{ transform: `translateX(100%)` }}>
+            <a onClick={() => closeBtn(1)}>
+              <img src={posts[1].image} alt="Red Kitchen" />
+              <p>{posts[1].title}</p>
+            </a>
+          </section>
+          <button className="btn btn-next" onClick={() => navigateSlides(1)}>
+            {">"}
+          </button>
+          <button className="btn btn-prev" onClick={() => navigateSlides(-1)}>
+            {"<"}
+          </button>
+        </article>
+      );
+
+    //Renders when there is 3 or more posts
+    default:
+      return (
+        <article class="slider">
+          <section class="slide" style={{ transform: `translateX(0%)` }}>
+            <a onClick={() => closeBtn(0)}>
+              <img src={posts[0].image} alt="Red Kitchen" />
+              <p>{posts[0].title}</p>
+            </a>
+          </section>
+          <section class="slide" style={{ transform: `translateX(100%)` }}>
+            <a onClick={() => closeBtn(1)}>
+              <img src={posts[1].image} alt="Red Kitchen" />
+              <p>{posts[1].title}</p>
+            </a>
+          </section>
+          <section class="slide" style={{ transform: `translateX(200%)` }}>
+            <a onClick={() => closeBtn(2)}>
+              <img src={posts[2].image} alt="Red Kitchen" />
+              <p>{posts[2].title}</p>
+            </a>
+          </section>
+          <button class="btn btn-next" onClick={() => navigateSlides(1)}>
+            {">"}
+          </button>
+          <button class="btn btn-prev" onClick={() => navigateSlides(-1)}>
+            {"<"}
+          </button>
+        </article>
+      );
+      break;
+  }
 }

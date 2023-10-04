@@ -1,9 +1,8 @@
 import "./style.css";
-import Logo from "../../images/Titleless-Logo.png";
 export default function Footer() {
   return (
     <footer>
-      <img src={Logo} alt="" />
+      <img src={"/images/Titleless-Logo.png"} alt="" />
       <section>
         <h2>Redirect</h2>
         <a href="index.html">Home</a>
