@@ -5,9 +5,10 @@ export default function ControlPanel() {
   const [open, setOpen] = useState(false);
   const [play, setPlay] = useState(false);
   const [option, setOption] = useState();
+  const [newFormOption, setNewFormOption] = useState();
   const { posts, dispatch } = usePosts();
   const [imageUrl, setImageUrl] = useState();
-
+  const [longPostElements, setLongPostElements] = useState([]);
   //Defines animation to play
   const style = (state) => {
     if (state) {
@@ -41,6 +42,51 @@ export default function ControlPanel() {
     dispatch({ type: "DeletePost", key: posts[index].title });
   };
 
+  //Function that adds a new element to LongPosts
+  const addLongPostElement = () => {
+    if (newFormOption == "title" || newFormOption == "subtitle") {
+      setLongPostElements([
+        ...longPostElements,
+        { type: newFormOption, text: "", content: "" },
+      ]);
+    } else if (newFormOption == "paragraph") {
+      setLongPostElements([
+        ...longPostElements,
+        { type: newFormOption, content: "" },
+      ]);
+    }
+  };
+
+  //Function to generate the post based on the longPostElements object array
+  const generateLongPost = () => {
+    const longPostJSXElements = longPostElements.map(
+      (longPostElement, index) => {
+        if (longPostElement.type == "title") {
+          return (
+            <div key={index}>
+              <h1>{longPostElement.text}</h1>
+              <p>{longPostElement.content}</p>
+            </div>
+          );
+        } else if (longPostElement.type == "subtitle") {
+          return (
+            <div key={index}>
+              <h2>{longPostElement.text}</h2>
+              <p>{longPostElement.content}</p>
+            </div>
+          );
+        } else if (longPostElement.type == "paragraph") {
+          return (
+            <div key={index}>
+              <p>{longPostElement.content}</p>
+            </div>
+          );
+        }
+      }
+    );
+    return longPostJSXElements;
+  };
+
   //State to receive Data from the form
   const [formData, setFormData] = useState({
     title: "",
@@ -50,8 +96,12 @@ export default function ControlPanel() {
   });
 
   //Reducer function to create a post
-  const addHandler = event => {
-    event.preventDefault()
+  const addHandler = (event) => {
+    event.preventDefault();
+
+    //Calls function to create the longPost
+    const longPost = generateLongPost();
+
     //Creates shortPost JSX from formData
     const shortPost = (
       <div>
@@ -67,12 +117,16 @@ export default function ControlPanel() {
         title: formData.title,
         image: imageUrl,
         shortPost: shortPost,
+        longPost: longPost,
       },
     });
 
     //Resets formData after a dispatch
+    setLongPostElements([]);
+    setNewFormOption(null);
     setFormData({ title: "", image: null, shortPost: null, longPost: null });
-    setImageUrl(null)
+    setImageUrl(null);
+
     //Closes Form after upload
     playAnimation(false);
   };
@@ -99,13 +153,13 @@ export default function ControlPanel() {
     reader.onload = (event) => {
       const newImageUrl = event.target.result;
       setImageUrl(newImageUrl);
-      console.log(newImageUrl.data)
+      console.log(newImageUrl.data);
     };
 
     reader.readAsDataURL(file);
   };
 
-  // Function to handle text input change
+  // Function to handle title input change
   const handleTitleChange = (e) => {
     // Set the title in the form data
     setFormData({
@@ -114,7 +168,7 @@ export default function ControlPanel() {
     });
   };
 
-  // Function to handle large text input change
+  // Function to handle shortpost input change
   const handleShortPostChange = (e) => {
     // Set the large text in the form data
     setFormData({
@@ -122,16 +176,20 @@ export default function ControlPanel() {
       largeText: e.target.value,
     });
   };
+  //Function to handle changes in longePost inputs
+  const handleLongPostChange = (index, field, value) => {
+    const updatedLongPostElements = [...longPostElements];
+    updatedLongPostElements[index][field] = value;
+    setLongPostElements(updatedLongPostElements);
+  };
   //Function to render the Control option that the user selects
   const optionRenderer = () => {
     switch (option) {
       case "delete":
         return (
           <div>
-            <div className="deleteContainer">
-            {deletePostList}
-            </div>
-            
+            <div className="deleteContainer">{deletePostList}</div>
+
             <button
               className="closeControlPanel"
               onClick={() => playAnimation(false)}
@@ -158,9 +216,13 @@ export default function ControlPanel() {
               ) : (
                 <section>
                   {" "}
-                  <label htmlFor="imageUpload" id="UploadButton"> Click here to upload image</label><br/>
+                  <label htmlFor="imageUpload" id="UploadButton">
+                    {" "}
+                    Click here to upload image
+                  </label>
+                  <br />
                   <input
-                  style={{visibility: "hidden", height: 0}}
+                    style={{ visibility: "hidden", height: 0 }}
                     type="file"
                     id="imageUpload"
                     accept="image/*"
@@ -169,8 +231,10 @@ export default function ControlPanel() {
                   />
                 </section>
               )}
+
               <section>
-                <label>Title:</label><br/>
+                <label>Title:</label>
+                <br />
                 <input
                   type="text"
                   value={formData.title}
@@ -178,14 +242,58 @@ export default function ControlPanel() {
                   required
                 />
               </section>
+
               <section>
-                <label>Short Post:</label><br/>
+                <label>Short Post:</label>
+                <br />
                 <textarea
                   value={formData.largeText}
                   onChange={handleShortPostChange}
                   required
                 />
               </section>
+
+              <select onChange={(e) => setNewFormOption(e.target.value)}>
+                <option value="title">Title</option>
+                <option value="subtitle">Subtitle</option>
+                <option value="paragraph">Paragraph</option>
+              </select>
+
+              <button type="button" onClick={addLongPostElement}>
+                Add Form Element
+              </button>
+
+              {longPostElements.map((longPostsElement, index) => (
+                <section key={index}>
+                  {(longPostsElement.type === "title" ||
+                    longPostsElement.type === "subtitle") && (
+                    <section>
+                      <label>
+                        {longPostsElement.type === "title"
+                          ? "Title:"
+                          : "Subtitle:"}
+                      </label>
+                      <input
+                        type="text"
+                        value={longPostsElement.text}
+                        onChange={(e) =>
+                          handleLongPostChange(index, "text", e.target.value)
+                        }
+                      />
+                    </section>
+                  )}
+                  <section>
+                    <label>Paragraph:</label>
+                    <textarea
+                      value={longPostsElement.content}
+                      onChange={(e) =>
+                        handleLongPostChange(index, "content", e.target.value)
+                      }
+                    />
+                  </section>
+                </section>
+              ))}
+
               <button type="submit">Create Post</button>
             </form>
             <button
