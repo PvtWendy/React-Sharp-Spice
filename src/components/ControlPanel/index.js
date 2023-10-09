@@ -145,6 +145,11 @@ export default function ControlPanel() {
     </article>
   ));
 
+  const removeLongPostElement = (index) => {
+    const updatedLongPostElements = [...longPostElements];
+    updatedLongPostElements.splice(index, 1);
+    setLongPostElements(updatedLongPostElements);
+  };
   // Function to handle file input change
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -256,16 +261,6 @@ export default function ControlPanel() {
                 />
               </section>
 
-              <select onChange={(e) => setNewFormOption(e.target.value)}>
-                <option value="title">Title</option>
-                <option value="subtitle">Subtitle</option>
-                <option value="paragraph">Paragraph</option>
-              </select>
-
-              <button type="button" onClick={addLongPostElement}>
-                Add Form Element
-              </button>
-
               {longPostElements.map((longPostsElement, index) => (
                 <section key={index}>
                   {(longPostsElement.type === "title" ||
@@ -289,7 +284,6 @@ export default function ControlPanel() {
                     </section>
                   )}
                   <section>
-
                     <label>Paragraph:</label>
 
                     <br />
@@ -301,8 +295,25 @@ export default function ControlPanel() {
                       }
                     />
                   </section>
+                  <button
+                    key={index}
+                    onClick={() => removeLongPostElement(index)}
+                    className="removeLongPostElementButton"
+                  >
+                    Remove Above Section
+                  </button>
                 </section>
               ))}
+
+              <select onChange={(e) => setNewFormOption(e.target.value)}>
+                <option value="title">Title</option>
+                <option value="subtitle">Subtitle</option>
+                <option value="paragraph">Paragraph</option>
+              </select>
+
+              <button type="button" onClick={addLongPostElement}>
+                Add Form Element
+              </button>
 
               <button type="submit">Create Post</button>
             </form>
